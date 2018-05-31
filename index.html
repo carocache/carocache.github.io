@@ -53,11 +53,7 @@
 			    else compassdir = event.alpha;
 			    
 			    compass.style.transform = "rotate(" + -compassdir + "deg)";
-			    if (mylat) {
-				    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
-			    } else {
-				    bearing.textContent = "lat and lon not fucked";
-			    }
+			    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing && "sorry";
 			  });
 			}
 			
