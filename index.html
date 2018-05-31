@@ -90,7 +90,7 @@
 				        Math.sin(Δλ/2) * Math.sin(Δλ/2);
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 				
-				var d = R * c * 3280.84;
+				var d = R * c * 3.28084;
 				
 				var y = Math.sin(lon2-lon1) * Math.cos(lat2);
 				var x = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1);
