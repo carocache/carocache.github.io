@@ -88,10 +88,10 @@
 */
 			    if (distance >= 5280 * 10) {
 				    distEl.textContent = Math.round(distance / 5280);
-				    unitEl.textContent = "mi > 10mi";
+				    unitEl.textContent = "mi";
 			    } else if (distance >= 500) {
 				    distEl.textContent = (distance / 5280).toFixed(1);
-				    unitEl.textContent = "mi > 500ft";
+				    unitEl.textContent = "mi";
 			    } else if (distance >= 0) {
 				    distEl.textContent = distance;
 				    unitEl.textContent = "ft";
