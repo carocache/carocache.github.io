@@ -35,7 +35,7 @@
 		<div id="compass-wrapper">
 			<img id="compass" src="carocompass.svg" />
 		</div>
-		<h2><span id="dist"></span>&nbsp;ft</h2>
+		<h2><span id="dist"></span>&nbsp;<span id="unit">ft</span></h2>
 		<script>
 			let carocache = {
 				lat: 34.721217,
@@ -47,6 +47,7 @@
 			var latEl = document.querySelector("#lat");
 			var lonEl = document.querySelector("#lon");
 			var distEl = document.querySelector("#dist");
+			var unitEl = document.querySelector("unit");
 			
 			var mylat;
 			var mylon;
@@ -85,6 +86,16 @@
 			    latEl.textContent = mylat;
 			    lonEl.textContent = mylon;
 */
+			    if (distance >= 5280 * 10) {
+				    distEl.textContent = Math.round(distance / 5280);
+				    unitEl.textContent = "mi";
+			    } else if (distance >= 500) {
+				    distEl.textContent = (distance / 5280).toFixed(1);
+				    unitEl.textContent = "mi";
+			    } else if (distance >= 0) {
+				    distEl.textContent = distance;
+				    unitEl.textContent = "ft";
+			    }
 			    distEl.textContent = Math.round(distance);
 			  });
 			}
