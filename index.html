@@ -26,11 +26,11 @@
 				lon: -86.757800
 			}
 			
-			compass = document.querySelector("#comp");
-			bearing = document.querySelector("#bearing");
+			var compass = document.querySelector("#comp");
+			var bearing = document.querySelector("#bearing");
 			
-			mylat = 0;
-			mylon = 0;
+			var mylat = 0;
+			var mylon = 0;
 			
 			
 			navigator.geolocation.getCurrentPosition(function(pos) {
