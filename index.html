@@ -39,6 +39,8 @@
 				});
 			}
 			
+			updateLocation();
+			
 			if (window.DeviceOrientationEvent) {
 			  // Listen for the deviceorientation event and handle the raw data
 			  window.addEventListener('deviceorientation', function(eventData) {
@@ -54,7 +56,7 @@
 			    if (mylat) {
 				    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
 			    } else {
-				    bearing.textContent = "lat and lon not seet";
+				    bearing.textContent = "lat and lon not fucked";
 			    }
 			  });
 			}
