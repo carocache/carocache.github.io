@@ -6,14 +6,9 @@
 				font-family: sans-serif;
 			}
 			
-			#compass {
-				font-size: 3em;
-				text-align: center;
-			}
-			
 			#comp {
+				position: fixed;
 				width: 100%;
-				margin: auto;
 			}
 		</style>
 	</head>
@@ -22,14 +17,14 @@
 		<h2 id="lat">Lat: </h2>
 		<h2 id="lon">Lon: </h2>
 		<h2><span id="dist"></span>&nbsp;ft</h2>
-		<img id="comp" src="carocompass.png" />
+		<img id="compass" src="carocompass.png" />
 		<script>
 			let carocache = {
 				lat: 34.721217,
 				lon: -86.757800
 			}
 			
-			var compass = document.querySelector("#comp");
+			var compass = document.querySelector("#compass");
 			var bearingEl = document.querySelector("#bearing");
 			var latEl = document.querySelector("#lat");
 			var lonEl = document.querySelector("#lon");
