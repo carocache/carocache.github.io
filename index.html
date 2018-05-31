@@ -57,12 +57,16 @@
 			  });
 			}
 			
+			function degToRad(deg) {
+				return deg/180 * Math.PI;
+			}
+			
 			function getBearing(lat1, lon1, lat2, lon2) {
 				var R = 6371e3; // metres
-				var φ1 = Math.radians(lat1);
-				var φ2 = Math.radians(lat2);
-				var Δφ = Math.radians(lat2-lat1);
-				var Δλ = Math.radians(lon2-lon1);
+				var φ1 = degToRad(lat1);
+				var φ2 = degToRad(lat2);
+				var Δφ = degToRad(lat2-lat1);
+				var Δλ = degToRad(lon2-lon1);
 				
 				var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
 				        Math.cos(φ1) * Math.cos(φ2) *
@@ -71,9 +75,9 @@
 				
 				var d = R * c;
 				
-				var y = Math.sin(λ2-λ1) * Math.cos(φ2);
-				var x = Math.cos(φ1)*Math.sin(φ2) - Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
-				var brng = Math.degrees(Math.atan2(y, x));
+				var y = Math.sin(lon2-lon1) * Math.cos(lat2);
+				var x = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1);
+				var brng = -Math.atan2(y, x) / Math.PI * 180;
 				
 				return {
 					dist: d,
