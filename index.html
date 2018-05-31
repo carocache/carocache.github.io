@@ -58,7 +58,7 @@
 			    }
 			    else compassdir = event.alpha;
 			    
-			    compass.style.transform = "rotate(" + -compassdir + "deg)";
+			    compass.style.transform = "rotate(" + (bearing - compassdir) + "deg)";
 			    bearingEl.textContent = bearing;
 			  });
 			}
