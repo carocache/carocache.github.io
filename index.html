@@ -53,16 +53,16 @@
 			    else compassdir = event.alpha;
 			    
 			    compass.style.transform = "rotate(" + -compassdir + "deg)";
-			    bearing.textContent = mylat;
+			    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
 			  });
 			}
 			
 			function getBearing(lat1, lon1, lat2, lon2) {
 				var R = 6371e3; // metres
-				var φ1 = lat1.toRadians();
-				var φ2 = lat2.toRadians();
-				var Δφ = (lat2-lat1).toRadians();
-				var Δλ = (lon2-lon1).toRadians();
+				var φ1 = Math.radians(lat1);
+				var φ2 = Math.radians(lat2);
+				var Δφ = Math.radians(lat2-lat1);
+				var Δλ = Math.radians(lon2-lon1);
 				
 				var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
 				        Math.cos(φ1) * Math.cos(φ2) *
@@ -73,7 +73,7 @@
 				
 				var y = Math.sin(λ2-λ1) * Math.cos(φ2);
 				var x = Math.cos(φ1)*Math.sin(φ2) - Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
-				var brng = Math.atan2(y, x).toDegrees();
+				var brng = Math.degrees(Math.atan2(y, x));
 				
 				return {
 					dist: d,
