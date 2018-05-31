@@ -63,10 +63,10 @@
 			
 			updateLocation();
 			
-			setTimeout(function() {
+			setInterval(function() {
 				getBearing(mylat, mylon, carocache.lat, carocache.lon);
 				updateLocation();
-			}, 500);
+			}, 1000);
 			
 			if (window.DeviceOrientationEvent) {
 			  // Listen for the deviceorientation event and handle the raw data
