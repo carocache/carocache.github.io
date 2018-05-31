@@ -34,8 +34,6 @@
 			
 			var bearing;
 			
-			setTimeout(getBearing(mylat, mylon, carocache.lat, carocache.lon), 500);
-			
 			function updateLocation() {
 				navigator.geolocation.getCurrentPosition(function(pos) {
 					mylat = pos.coords.latitude;
@@ -44,6 +42,10 @@
 			}
 			
 			updateLocation();
+			
+			setTimeout(function() {
+				getBearing(mylat, mylon, carocache.lat, carocache.lon)
+			}, 500);
 			
 			if (window.DeviceOrientationEvent) {
 			  // Listen for the deviceorientation event and handle the raw data
