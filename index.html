@@ -19,6 +19,8 @@
 	</head>
 	<body>
 		<h1 id="bearing">init</h1>
+		<h2 id="lat">Lat: </h2>
+		<h2 id="lon">Lon: </h2>
 		<img id="comp" src="carocompass.png" />
 		<script>
 			let carocache = {
@@ -28,6 +30,8 @@
 			
 			var compass = document.querySelector("#comp");
 			var bearingEl = document.querySelector("#bearing");
+			var latEl = document.querySelector("#lat");
+			var lonEl = document.querySelector("#lon");
 			
 			var mylat;
 			var mylon;
@@ -60,6 +64,8 @@
 			    
 			    compass.style.transform = "rotate(" + (bearing - compassdir) + "deg)";
 			    bearingEl.textContent = bearing;
+			    latEl.textContent = mylat;
+			    lonEl.textContent = mylon;
 			  });
 			}
 			
