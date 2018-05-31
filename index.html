@@ -50,8 +50,11 @@
 			    else compassdir = event.alpha;
 			    
 			    compass.style.transform = "rotate(" + -compassdir + "deg)";
-			    if (mylat != 0) bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
-			    
+			    if (mylat != 0) {
+				    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
+			    } else {
+				    bearing.textContent = "lat and lon not set";
+			    }
 			  });
 			}
 			
