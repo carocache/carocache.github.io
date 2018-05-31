@@ -29,14 +29,15 @@
 			var compass = document.querySelector("#comp");
 			var bearing = document.querySelector("#bearing");
 			
-			var mylat = 0;
-			var mylon = 0;
+			var mylat;
+			var mylon;
 			
-			
-			navigator.geolocation.getCurrentPosition(function(pos) {
-				mylat = pos.coords.latitude;
-				mylon = pos.coords.longitude;
-			});
+			function updateLocation() {
+				navigator.geolocation.getCurrentPosition(function(pos) {
+					mylat = pos.coords.latitude;
+					mylon = pos.coords.longitude;
+				});
+			}
 			
 			if (window.DeviceOrientationEvent) {
 			  // Listen for the deviceorientation event and handle the raw data
@@ -50,10 +51,10 @@
 			    else compassdir = event.alpha;
 			    
 			    compass.style.transform = "rotate(" + -compassdir + "deg)";
-			    if (mylat != 0) {
+			    if (mylat) {
 				    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
 			    } else {
-				    bearing.textContent = "lat and lon not set";
+				    bearing.textContent = "lat and lon not seet";
 			    }
 			  });
 			}
