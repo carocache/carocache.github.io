@@ -17,9 +17,11 @@
 		</style>
 	</head>
 	<body>
+<!--
 		<h1 id="bearing">init</h1>
 		<h2 id="lat">Lat: </h2>
 		<h2 id="lon">Lon: </h2>
+-->
 		<h2><span id="dist"></span>&nbsp;ft</h2>
 		<img id="compass" src="carocompass.png" />
 		<script>
@@ -66,9 +68,11 @@
 			    else compassdir = event.alpha;
 			    
 			    compass.style.transform = "rotate(" + (bearing - compassdir) + "deg)";
+/*
 			    bearingEl.textContent = bearing;
 			    latEl.textContent = mylat;
 			    lonEl.textContent = mylon;
+*/
 			    distEl.textContent = distance;
 			  });
 			}
