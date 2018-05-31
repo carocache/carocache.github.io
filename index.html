@@ -21,6 +21,7 @@
 		<h1 id="bearing">init</h1>
 		<h2 id="lat">Lat: </h2>
 		<h2 id="lon">Lon: </h2>
+		<h2><span id="dist"></span>&nbsp;ft</h2>
 		<img id="comp" src="carocompass.png" />
 		<script>
 			let carocache = {
@@ -32,11 +33,13 @@
 			var bearingEl = document.querySelector("#bearing");
 			var latEl = document.querySelector("#lat");
 			var lonEl = document.querySelector("#lon");
+			var distEl = document.querySelector("#dist");
 			
 			var mylat;
 			var mylon;
 			
 			var bearing;
+			var distance;
 			
 			function updateLocation() {
 				navigator.geolocation.getCurrentPosition(function(pos) {
@@ -48,7 +51,8 @@
 			updateLocation();
 			
 			setTimeout(function() {
-				getBearing(mylat, mylon, carocache.lat, carocache.lon)
+				getBearing(mylat, mylon, carocache.lat, carocache.lon);
+				updateLocation();
 			}, 500);
 			
 			if (window.DeviceOrientationEvent) {
@@ -66,6 +70,7 @@
 			    bearingEl.textContent = bearing;
 			    latEl.textContent = mylat;
 			    lonEl.textContent = mylon;
+			    distEl.textContent = distance;
 			  });
 			}
 			
@@ -85,13 +90,14 @@
 				        Math.sin(Δλ/2) * Math.sin(Δλ/2);
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 				
-				var d = R * c;
+				var d = R * c * 3280.84;
 				
 				var y = Math.sin(lon2-lon1) * Math.cos(lat2);
 				var x = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1);
 				var brng = -Math.atan2(y, x) / Math.PI * 180;
 				
 				bearing = brng;
+				distance = d;
 /*
 				return {
 					dist: d,
