@@ -27,10 +27,14 @@
 			}
 			
 			var compass = document.querySelector("#comp");
-			var bearing = document.querySelector("#bearing");
+			var bearingEl = document.querySelector("#bearing");
 			
 			var mylat;
 			var mylon;
+			
+			var bearing;
+			
+			setTimeout(getBearing(mylat, mylon, carocache.lat, carocache.lon), 500);
 			
 			function updateLocation() {
 				navigator.geolocation.getCurrentPosition(function(pos) {
@@ -52,8 +56,7 @@
 			    }
 			    else compassdir = event.alpha;
 			    
-			    compass.style.transform = "rotate(" + -compassdir + "deg)";
-			    bearing.textContent = getBearing(mylat, mylon, carocache.lat, carocache.lon).bearing;
+			    compass.style.transform = "rotate(" + -compassdir + bearing + "deg)";
 			  });
 			}
 			
@@ -79,10 +82,13 @@
 				var x = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1);
 				var brng = -Math.atan2(y, x) / Math.PI * 180;
 				
+				bearing = brng;
+/*
 				return {
 					dist: d,
 					bearing: brng
 				};
+*/
 			}
 		</script>
 	</body>
